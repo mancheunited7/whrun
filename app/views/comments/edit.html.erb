@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="wrapper col-md-10 col-md-offset-2">
+    <div class="title">コメントの編集</div>
+    <%= form_for([@run,@comment]) do |f| %>
+      <%= f.hidden_field :run_id %>
+      <div class="area">
+        <%= f.text_area :content , class: "form-control" %>
+      </div>
+      <div class="button-panel">
+        <%= f.submit "コメントを編集する" , class: "button" %>
+      </div>
+      <%= link_to "記録の詳細へ戻る", run_path(@run.id) , class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
+</diV>

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="wrapper col-md-10 col-md-offset-2">
+    <p class="title">〜コメント通知〜</p>
+      <ul>
+        <% @notifications.each do |notification|  %>
+          <hr>
+          <li>
+            <span class = "read"><%= read_status(notification.read) %></span>
+            <p>
+              <span class = "name"><%= notification.comment.user.try(:name) %></span>さんが
+              あなたの記録(<%= link_to "#{notification.comment.run.taikai}",run_path(notification.comment.run,notification_id: notification.id) %>)にコメントしました。
+            </p>
+            <p><%= posted_time(notification.created_at) %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>

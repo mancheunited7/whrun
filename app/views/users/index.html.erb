@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="wrapper col-md-10 col-md-offset-2">
+    <div class="title">〜ユーザー一覧〜</div>
+      <table>
+        <tr>
+          <th width="200" height="30">ユーザー名</th>
+          <th width="200" height="30">プロフィール画像</th>
+          <th width="200" height="30">メールアドレス</th>
+          <th width="200" height="30">フォロー/フォロー解除ボタン</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td width="200" height="70"><%= link_to user.name, user_path(user) %></td>
+            <td width="200" height="70"><%= profile_img(user) %></td>
+            <td width="200" height="70"><%= user.email %></td>
+            <!-- フォロー/フォロー解除ボタンの切り替え（自分には表示しない）-->
+            <% if user.id != current_user.id %>
+              <td width="200" height="70">
+                <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<%= form_for([run,comment],remote:true) do |f| %>
+
+  <%= f.hidden_field :run_id %>
+    <div class="field">
+      <p><%= profile_img(current_user) %></p>
+      <p><%= f.text_field :content,
+             placeholder: "コメントする", class: "form-control input-lg comform" %>
+      </p>
+    </div>
+
+    <div class="button-panel">
+      <%= f.submit "コメントする", class: "button" %>
+    </div>
+    
+<% end %>

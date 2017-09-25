@@ -1,0 +1,19 @@
+
+<div id= "follow_form_<%=user.id %>">
+  <!-- 現在ログインしているユーザーがフォローしていない場合　フォローボタン表示-->
+  <% unless current_user.following?(user) %>
+    <%= form_for(current_user.relationships.build(followed_id: user.id),remote: true) do |f| %>
+      <%= f.hidden_field :followed_id %>
+      <div class="button-user">
+        <%= f.submit "フォロー", class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+  <!-- フォローしている場合 アンフォローボタン表示-->
+  <% else %>
+    <%= form_for(current_user.relationships.find_by(followed_id: user.id),html:{method: :delete},remote: true) do |f| %>
+      <div class="button-user">
+        <%= f.submit "フォロー解除",class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,62 @@
+<!-- 呼び出すコントローラ、アクションによって表示切り替え -->
+<% controller_name = controller.controller_name %>
+<% action_name = controller.action_name %>
+
+<table>
+  <tr>
+    <% if (action_name == "index") or (controller_name == "users" and action_name == "show") %>
+      <th width="200" height="30"><%= sort_link(q, :year) %></th>
+    <% else %>
+      <th width="200" height="30">日付</th>
+    <% end %>
+    <th width="200" height="30">大会</th>
+    <th width="200" height="30">場所</th>
+    <% if (action_name == "index") or (controller_name == "users" and action_name == "show") %>
+      <th width="200" height="30"><%= sort_link(q, :kyori) %></th>
+      <th width="200" height="30"><%= sort_link(q, :time) %></th>
+    <% else %>
+      <th width="200" height="30">距離</th>
+      <th width="200" height="30">タイム</th>
+    <% end %>
+    <th width="200" height="30">編集/削除</th>
+  </tr>
+    <% if (action_name == "index") or (controller_name == "users" and action_name == "show") %>
+      <% @run.each do |run| %>
+        <tr>
+          <td width="200" height="70"><%= run.year %></td>
+          <td width="200" height="70">
+            <%= link_to run_path(run) do %>
+              <%= run.taikai %>
+            <% end %>
+          </td>
+          <td width="200" height="70"><%= run.addresshyoji %></td>
+          <td width="200" height="70"><%= run.kyorihyoji %></td>
+          <td width="200" height="70"><%= run.timehyoji %></td>
+          <td width="200" height="70">
+            <% if run.user_id == current_user.id %>
+              <div class="button-inline">
+                <%= link_to "編集", edit_run_path(run), class: "btn btn-primary btn-block" %>
+                <%= link_to "削除", run_path(run), method: :delete,data:{confirm:'削除してもいいですか？？'}, class:"btn btn-primary btn-block" %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td width="200" height="70"><%= run.year %></td>
+        <td width="200" height="70"><%= run.taikai %></td>
+        <td width="200" height="70"><%= run.addresshyoji %></td>
+        <td width="200" height="70"><%= run.kyorihyoji %></td>
+        <td width="200" height="70"><%= run.timehyoji %></td>
+        <td width="200" height="70">
+          <% if run.user_id == current_user.id %>
+            <div class="button-inline">
+              <%= link_to "編集", edit_run_path(run), class: "btn btn-primary btn-block" %>
+              <%= link_to "削除", run_path(run), method: :delete,data:{confirm:'削除してもいいですか？？'}, class:"btn btn-primary btn-block" %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+</table>

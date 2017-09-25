@@ -1,0 +1,21 @@
+<div class="form-wrapper">
+
+  <h2>パスワード忘れはこちら</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="form-item">
+      <!--<%= f.label :email %><br />-->
+      <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %>
+    </div>
+
+    <div class="button-panel">
+      <%= f.submit "パスワード再発行",class: "button"  %>
+    </div>
+  <% end %>
+
+  <div class="form-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

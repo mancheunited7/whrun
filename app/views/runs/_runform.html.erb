@@ -1,0 +1,65 @@
+<%= form_for(run) do |f| %>
+
+  <% if @run.errors.any? %>
+    <div id="errors">
+      <h2><%= @run.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <%= @run.errors.full_messages.each do |msg| %>
+          <li><% msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="title">〜大会記録を保存しよう〜</div>
+  <div class="field"><h4><%= f.label :大会の開催日を設定しよう %></h4></div>
+
+  <%= raw sprintf(
+      f.date_select(
+       :year,
+      {order: [ :year, :month, :day ],
+       use_month_numbers: true,
+       date_separator:    '%s'},
+       {class: "form-control input-lg bootstrap-dt"}),
+       '年 ', '月 ') + '日' %>
+
+  <div class="field"><h4><%= f.label :開催地を設定しよう %></h4></div>
+
+  <%= f.text_field :addresshyoji,id:"addresshyoji",onchange: "getaddress()",
+      placeholder: "【都道府県市区町村 or スタート地点】 を入力してください",
+      class: "form-control input-lg bootstrap-place" %>
+
+  <%= f.hidden_field :address, id: "address" %>
+
+  <div class="field"><h4><%= f.label :種目を設定しよう %></h4></div>
+  <%= f.select :kyori,
+        [["5km","5"],["10km","10"],["ハーフ","21"],
+        ["30km","30"],["フル","42"],["100km","100"]],
+        {prompt: "走った距離を選択してください"},
+        class: "form-control input-lg" %>
+
+  <div class="field"><h4><%= f.label :大会名を設定しよう  %></h4></div>
+  <%= f.text_field :taikai, class: "form-control  input-lg" %>
+
+  <div class="field"><h4><%= f.label :タイムを設定しよう  %></h4></div>
+  <%= f.number_field :hour, class: "form-control input-lg bootstrap-dt",
+      placeholder: "時間", min:0, value: 0 %>時間
+  <%= f.number_field :minute, class: "form-control input-lg bootstrap-dt",
+      placeholder: "分",min: 0 ,max: 60, value: 0 %>分
+  <%= f.number_field :second, class: "form-control input-lg bootstrap-dt",
+      placeholder: "秒",min: 0 ,max: 60, value: 0 %>秒
+
+  <div class="field"><h4><%= f.label :大会の思い出を記録しよう %></h4></div>
+  <div class="area">
+    <%= f.text_area :content,rows: "5" , class: "form-control input-lg" %>
+  </div>
+
+  <div class="field"><h4><%= f.label :思い出の写真を投稿しよう %></h4></div>
+  <%= f.file_field :avatar %>
+  <%= f.hidden_field :avatar_cache %>
+
+  <div class="button-panel">
+    <%= f.submit "大会記録を登録する", class: "button"%>
+  </div>
+  <%= link_to "大会記録一覧へ戻る", runs_path, class: "btn btn-primary btn-block"  %>
+<% end %>

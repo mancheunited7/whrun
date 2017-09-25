@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="col-md-12">
+
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "ログイン", new_session_path(resource_name),class: "btn btn-block button " %><br />
+    <% end -%>
+
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "新規登録", new_registration_path(resource_name),class: "btn btn-default btn-block fl_gh" %><br />
+    <% end -%>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "パスワードリセット", new_password_path(resource_name),class: "btn btn-default btn-block " %><br />
+    <% end -%>
+
+    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <%= link_to "確認メールの再送信", new_confirmation_path(resource_name),class: "btn btn-default  btn-block" %><br />
+    <% end -%>
+
+    <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+      <%= link_to "アカウント凍結解除メールの再送信", new_unlock_path(resource_name),class: "btn btn-default  btn-block" %><br />
+    <% end -%>
+
+<!--<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+  <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),class: "btn btn-default  btn-block" %><br />
+  <% end -%>
+<% end -%>-->
+
+    <%= link_to "Twitterログイン", user_twitter_omniauth_authorize_path, class: " btn btn-block fl_tw2 fa fa-twitter " %></br></br>
+    <%= link_to "Facebookログイン", user_facebook_omniauth_authorize_path, class: " btn btn-block fl_fb2 fa fa-facebook " %></br></br>
+    <%= link_to "Googleログイン", user_google_omniauth_authorize_path, class: " btn btn-block fl_go2 fa fa-google " %></br></br>
+    <%= link_to "Yahooログイン", user_Yahoo_omniauth_authorize_path, class: " btn btn-block fl_ya2 fa fa-yahoo " %>
+
+  </div>
+</div>

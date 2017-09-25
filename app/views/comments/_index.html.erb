@@ -1,0 +1,17 @@
+<div class="child">
+    <% comments.each do |comment| %>
+      <% unless comment.id.nil? %>
+        <div class="field">
+          <p><%= profile_img(comment.user) %></p>
+          <p class="color"><strong><%= comment.user.name %></strong></p>
+          <p><%= comment.content %></p>
+          <% if current_user.id == comment.user.id %>
+            <p>
+              <%= link_to '', edit_run_comment_path(run, comment), class: "fa fa-commenting fa-lg" %>
+              <%= link_to '', run_comment_path(run, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+</div>

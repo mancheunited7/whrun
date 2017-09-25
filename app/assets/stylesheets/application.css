@@ -1,0 +1,130 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require devise_bootstrap_views
+ */
+
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  text-align: center;
+}
+
+.wrapper{
+  padding: 0;
+  top:20px;
+}
+
+a:hover {
+ text-decoration: underline;
+ text-decoration-color: #228896;
+ text-decoration-style: double;
+}
+
+#fh5co-aside {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  width: 18%;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+}
+
+.navbar-brand{
+  position: relative;
+  left: 30px;
+  top:-30px;
+  color: black;
+}
+
+.navbar-brand:hover{
+  color: #ee3e52;
+}
+
+#fh5co-aside #fh5co-main-menu ul {
+  text-align: center;
+  margin: 40px;
+  padding: 0;
+}
+
+#fh5co-aside #fh5co-main-menu ul li {
+  margin: 0 0 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+#fh5co-aside #fh5co-main-menu a {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  padding: 10px 10px;
+  letter-spacing: .2em;
+}
+
+#fh5co-aside .fh5co-footer {
+  position: absolute;
+  bottom: 180px;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  font-weight: 400;
+  padding: 0 20px;
+}
+
+.button-panel .button{
+  background: #f16272;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height:50px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width:100%;
+}
+
+.button:hover {
+  background: #ee3e52;
+}
+
+.title{
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 300%;
+  top:10px;
+}
+
+table{
+  width: 100%;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+table th {
+   text-align: center;
+   background-color: #CCCCCC;
+}
+
+.area {
+  border: medium #c0c0c0 double;
+}

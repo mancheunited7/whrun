@@ -1,0 +1,22 @@
+<div class="form-wrapper">
+  <h2>確認メール再送信</h2>
+
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="form-item">
+      <!--<%= f.label :email %><br />-->
+      <%= f.email_field :email, autofocus: true,
+          value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+          placeholder: "メールアドレス" %>
+    </div>
+
+    <div class="button-panel">
+      <%= f.submit "確認メール再送信",class: "button" %>
+    </div>
+  <% end %>
+
+  <div class="form-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

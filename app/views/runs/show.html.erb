@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="wrapper col-md-10 col-md-offset-2">
+    <%= notice %>
+    <div class="title">〜記録の詳細〜</div>
+    <div class="right"><strong>作成日時:</strong><%= @run.created_at.strftime("%y/%m/%d %p %I:%M") %></div>
+    <%= render partial: 'record_table', locals:{ run: @run } %>
+
+    <% if @run.avatar.present? %>
+      <%= image_tag(@run.avatar, size: "600x350") %>
+    <% end %>
+
+    <div id="map"></div>
+    <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(15);
+      });
+    </script>
+
+    <div id="comments_area">
+      <%= render partial:'comments/index',locals:{comments:@comments,run:@run}%>
+    </div>
+    <% if @run.user_id != current_user.id %>
+      <%= render partial:'comments/form',locals:{comment:@comment,run:@run} %>
+    <% end %>
+    <div class="link">
+    <%= link_to "ユーザー詳細一覧へ戻る", user_path(@run), class: "btn btn-primary btn-block" %>
+</div>
+    </div>
+</div>

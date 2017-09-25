@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="wrapper col-md-10 col-md-offset-2">
+    <!-- グループ間のスペース設定　-->
+    <div class="space">
+      <div class="title-show"><%= @user.name %>のラン友（フォロー）一覧</div>
+      <table>
+        <tr>
+          <th width="200" height="30">ユーザー名</th>
+          <th width="200" height="30">プロフィール画像</th>
+          <th width="200" height="30">メールアドレス</th>
+        </tr>
+        <% @user.followed_users.each do |user| %>
+          <%= render 'follow_follower_form',user: user %>
+        <% end %>
+      </table>
+    </div>
+
+  <!-- グループ間のスペース設定　-->
+    <div class="space">
+      <div class="title-show"><%= @user.name %>のラン友（フォロワー）一覧</div>
+      <table>
+        <tr>
+          <th width="200" height="30">ユーザー名</th>
+          <th width="200" height="30">プロフィール画像</th>
+          <th width="200" height="30">メールアドレス</th>
+        </tr>
+        <% @user.followers.each do |user| %>
+          <%= render 'follow_follower_form',user: user %>
+        <% end %>
+      </table>
+    </div>
+
+    <!-- ラン友の記録一覧表示-->
+    <div class="title-show"><%= @user.name %>の大会記録一覧</div>
+    <%= render partial: 'runs/record_table' , locals: { q: @q , run: @run } %>
+
+  </div>
+</div>

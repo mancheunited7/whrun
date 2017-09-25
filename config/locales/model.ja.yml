@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      run:
+        year: "日付"
+        kyori: "種目"
+        time: "タイム"
+        addresshyoji: "開催地"
+        taikai: "大会名"
+        hour: "時間"
+        minute: "分"
+        second: "秒"
+        content: "大会の思い出"
+      user:
+        title: "タイトル"
+        name: "名前"
+        email: "メールアドレス"
+        content: "内容"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"

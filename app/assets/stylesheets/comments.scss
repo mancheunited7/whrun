@@ -1,0 +1,24 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.right {
+text-align: right;
+}
+
+.left {
+text-align: left;
+}
+
+.color{
+  color:#4966a0;
+}
+
+.field p{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.field p .comform{
+  width:460%;
+}

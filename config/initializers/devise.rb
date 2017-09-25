@@ -278,6 +278,11 @@ Devise.setup do |config|
   if Rails.env.production?
     config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
     config.omniauth :twitter, ENV["TWITTER_ID_PRODUCTION"], ENV["TWITTER_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
+    config.omniauth :google_oauth2, ENV["GOOGLE_APP_ID_PRODUCTION"], ENV["GOOGLE_APP_PRODUCTION"],
+                     scope: 'email,profile,plus.me',
+                     name: 'google',
+                     display: 'popup', info_fields: 'email,profile'
+    config.omniauth :yahoojp, ENV["YAHOOJP_KEY_PRODUCTION"], ENV["YAHOOJP_SECRET_PRODUCTION"], scope: 'openid profile email address', name: 'Yahoo',display: 'popup', info_fields: 'name,email'
   else
     config.omniauth :facebook, ENV["FACEBOOK_ID_DEVELOPMENT"], ENV["FACEBOOK_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
     config.omniauth :twitter, ENV["TWITTER_ID_DEVELOPMENT"], ENV["TWITTER_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'

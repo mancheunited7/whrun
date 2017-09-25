@@ -27,7 +27,8 @@
       <%= render partial:'comments/form',locals:{comment:@comment,run:@run} %>
     <% end %>
     <div class="link">
-    <%= link_to "ユーザー詳細一覧へ戻る", user_path(@run), class: "btn btn-primary btn-block" %>
-</div>
+      <%= link_to "大会記録一覧へ", runs_path(@run), class: "btn btn-primary btn-block" %>
+      <%= link_to "ユーザー詳細一覧へ", user_path(@run), class: "btn btn-primary btn-block" %>
     </div>
+  </div>
 </div>

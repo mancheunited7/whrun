@@ -5,14 +5,15 @@ class Run < ActiveRecord::Base
   validates:addresshyoji,presence: true
   validates:kyori,presence: true
   validates:taikai,presence:true
-  validates:hour,numericality: {
-            only_integer: true ,greater_than_or_equal_to: 0}
-  validates:minute,numericality: {
-            only_integer: true, greater_than_or_equal_to: 0,
-            less_than_or_equal_to: 60}
-  validates:second,numericality: {
-            only_integer: true, greater_than_or_equal_to: 0,
-            less_than_or_equal_to: 60}
+  validates:time,numericality:{greater_than: 0}
+  #validates:hour,numericality: {
+  #          only_integer: true ,greater_than_or_equal_to: 0}
+  #validates:minute,numericality: {
+  #          only_integer: true, greater_than_or_equal_to: 0,
+  #          less_than_or_equal_to: 60}
+  #validates:second,numericality: {
+  #          only_integer: true, greater_than_or_equal_to: 0,
+  #          less_than_or_equal_to: 60}
   validates:content,presence:true
 
   mount_uploader :avatar, AvatarUploader

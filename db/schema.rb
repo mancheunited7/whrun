@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923132714) do
+ActiveRecord::Schema.define(version: 20170925161907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,8 +70,6 @@ ActiveRecord::Schema.define(version: 20170923132714) do
     t.string   "kyorihyoji"
     t.string   "address"
     t.string   "addresshyoji"
-    t.integer  "flg"
-    t.integer  "zoom"
   end
 
   create_table "sessions", force: :cascade do |t|

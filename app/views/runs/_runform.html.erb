@@ -17,7 +17,7 @@
   <%= raw sprintf(
       f.date_select(
        :year,
-      {order: [ :year, :month, :day ],
+       {order: [ :year, :month, :day ],
        use_month_numbers: true,
        date_separator:    '%s'},
        {class: "form-control input-lg bootstrap-dt"}),
@@ -43,11 +43,11 @@
 
   <div class="field"><h4><%= f.label :タイムを設定しよう  %></h4></div>
   <%= f.number_field :hour, class: "form-control input-lg bootstrap-dt",
-      placeholder: "時間", min:0, value: 0 %>時間
+      placeholder: "時間", min:0 %>時間
   <%= f.number_field :minute, class: "form-control input-lg bootstrap-dt",
-      placeholder: "分",min: 0 ,max: 60, value: 0 %>分
+      placeholder: "分",min: 0 ,max: 60 %>分
   <%= f.number_field :second, class: "form-control input-lg bootstrap-dt",
-      placeholder: "秒",min: 0 ,max: 60, value: 0 %>秒
+      placeholder: "秒",min: 0 ,max: 60 %>秒
 
   <div class="field"><h4><%= f.label :大会の思い出を記録しよう %></h4></div>
   <div class="area">

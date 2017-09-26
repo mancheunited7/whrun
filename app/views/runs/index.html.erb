@@ -2,7 +2,7 @@
   <div class="wrapper col-md-10 col-md-offset-2">
     <%= notice %>
     <!-- ログインユーザーの大会記録一覧表示-->
-    <div class="title"><%= current_user.name %>の大会記録一覧</div>
+    <div class="title">〜<%= current_user.name %>の大会記録一覧〜</div>
     <div class="field"><h5>※日付・距離・タイムのタイトルをクリックすると、それぞれ昇順/降順に並び替えできます。</h5></div>
     <%= render partial: 'record_table', locals:{ q: @q, run: @run } %>
 

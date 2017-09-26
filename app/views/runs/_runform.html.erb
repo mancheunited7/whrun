@@ -17,7 +17,9 @@
   <%= raw sprintf(
       f.date_select(
        :year,
-       {order: [ :year, :month, :day ],
+       {start_year: Time.now.year - 1,
+       end_year: Time.now.year,
+       order: [ :year, :month, :day ],
        use_month_numbers: true,
        date_separator:    '%s'},
        {class: "form-control input-lg bootstrap-dt"}),
@@ -55,6 +57,7 @@
   </div>
 
   <div class="field"><h4><%= f.label :思い出の写真を投稿しよう %></h4></div>
+  <%= run_img(run) if run_img(run) %>
   <%= f.file_field :avatar %>
   <%= f.hidden_field :avatar_cache %>
 
